@@ -12,10 +12,7 @@ Currently, two official plugins are available:
 - Flexbox
 - BEM File Structure
 - Importing Fonts
-- [Figma]([https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1](https://www.figma.com/design/F03bTb81Pw8IDPj5Y9rc5i/Sprint-10-%7C-WTWR?node-id=311-433&node-type=canvas&t=bRWHYrxYgIl5Cj02-0))
+- [Figma](https://www.figma.com/design/F03bTb81Pw8IDPj5Y9rc5i/Sprint-10-%7C-WTWR?node-id=311-433&node-type=canvas&t=VfkBqyjKzoV5NVx5-0)
 - API
 - JavaScript
 - JSX
-
-
-  
