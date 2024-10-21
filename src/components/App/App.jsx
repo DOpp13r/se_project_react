@@ -77,6 +77,7 @@ function App() {
               type="radio"
               className="modal__input modal__radio-input"
               id="hot"
+              name="weather"
             />
             Hot
           </label>
@@ -88,6 +89,7 @@ function App() {
               type="radio"
               className="modal__input modal__radio-input"
               id="warm"
+              name="weather"
             />
             Warm
           </label>
@@ -100,6 +102,7 @@ function App() {
               type="radio"
               className="modal__input modal__radio-input"
               id="cold"
+              name="weather"
             />
             Cold
           </label>
