@@ -1,0 +1,51 @@
+.toggle__switch {
+  font-family: "CabinetGrotesk-Bold", sans-serif;
+  display: flex;
+  position: relative;
+  margin: 0 20px 0 auto;
+}
+
+.toggle__switch-box {
+  border-radius: 20px;
+  border: 3px solid #7e7e7e;
+  width: 56px;
+  height: 28px;
+  appearance: none;
+}
+
+.switch__slider {
+  position: absolute;
+  border-radius: 20px;
+  width: 28px;
+  height: 28px;
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.switch__slider-F {
+}
+
+.switch__slider-C {
+  left: 20px;
+}
+
+.switch__temp-F {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  color: #00000080;
+}
+
+.switch__temp-C {
+  position: absolute;
+  top: -10px;
+  left: 35px;
+  color: #00000080;
+}
+
+.switch__active {
+  color: #ffffff;
+  font-size: 16px;
+}

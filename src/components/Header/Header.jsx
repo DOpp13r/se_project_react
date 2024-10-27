@@ -1,6 +1,7 @@
 import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
+import ToggleSwitch from "../ToggleSwtich/ToggleSwitch";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -15,6 +16,7 @@ function Header({ handleAddClick, weatherData }) {
         {" "}
         {currentDate}, {weatherData.city}
       </p>
+      <ToggleSwitch />
       <button
         className="header__add-button"
         type="button"
