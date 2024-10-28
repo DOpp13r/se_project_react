@@ -28,7 +28,7 @@
 }
 
 .switch__slider-C {
-  left: 20px;
+  left: 28px;
 }
 
 .switch__temp-F {
@@ -41,7 +41,7 @@
 .switch__temp-C {
   position: absolute;
   top: -10px;
-  left: 35px;
+  left: 36px;
   color: #00000080;
 }
 
