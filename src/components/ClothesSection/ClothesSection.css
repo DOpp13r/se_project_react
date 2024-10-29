@@ -1,0 +1,27 @@
+.clothes__section-header {
+  font-family: "CabinetGrotesk-Bold", sans-serif;
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+}
+
+.clothes__section-title {
+  height: 25px;
+  margin: 16px 0 15px;
+}
+
+.clothes__section-add-button {
+  padding: 0;
+  border: 0;
+  width: 88px;
+  cursor: pointer;
+  color: #00000099;
+}
+
+.clothes__section-items {
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+  gap: 21px;
+  margin-top: 1px;
+}

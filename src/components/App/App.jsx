@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import Profile from "../Profile/Profile";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
@@ -18,7 +20,6 @@ function App() {
   });
   const [modalOpen, setModalOpen] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  // const [temp, setTemp] = useState(0);
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
 
   const handleCardClick = (card) => {
@@ -57,7 +58,18 @@ function App() {
       >
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                />
+              }
+            />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
         </div>
         <ModalWithForm
           title="New garment"

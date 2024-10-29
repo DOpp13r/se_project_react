@@ -1,0 +1,6 @@
+.profile {
+  display: flex;
+  gap: 116px;
+  align-items: flex-start;
+  padding-top: 19px;
+}
