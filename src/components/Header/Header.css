@@ -5,6 +5,11 @@
   align-items: center;
 }
 
+.header__link {
+  text-decoration: none;
+  color: #000000;
+}
+
 .header__logo {
   margin-right: 24px;
 }
