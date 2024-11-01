@@ -36,5 +36,3 @@ const getWeatherType = (temperature) => {
     return "cold";
   }
 };
-// weather.temperature.F = data.main.temp;
-// weather.temperature.C = Math.round(((data.main.temp - 32) * 5) / 9);

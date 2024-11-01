@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { getWeather, filterWeatherData } from "../../utils/weatherApi";
+import { coordinates, APIkey } from "../../utils/constants";
+import { CurrentTempUnitContext } from "../../contexts/CurrentTempUnitContext";
 
 import "./App.css";
 import Header from "../Header/Header";
@@ -9,9 +12,11 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Footer from "../Footer/Footer";
-import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { coordinates, APIkey } from "../../utils/constants";
-import { CurrentTempUnitContext } from "../../contexts/CurrentTempUnitContext";
+import {
+  getClothingItems,
+  addClothingItem,
+  deleteClothingItem,
+} from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -22,6 +27,7 @@ function App() {
   const [modalOpen, setModalOpen] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleCardClick = (card) => {
     setModalOpen("preview");
@@ -36,14 +42,32 @@ function App() {
     setModalOpen("");
   };
 
-  const onAddItem = (e) => {
-    e.preventDefault();
-    console.log(e);
-  };
+  function onAddItem({ name, imageUrl, weather }, resetForm) {
+    addClothingItem({ name, imageUrl, weather })
+      .then((data) => {
+        setClothingItems((prevItem) => [data, ...prevItem]);
+        closeModal();
+        resetForm();
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function onDeleteItem() {
+    deleteClothingItem(selectedCard)
+      .then((data) => {
+        getClothingItems().then((data) => {
+          setClothingItems(data);
+          closeModal();
+        });
+      })
+      .catch(console.error);
+  }
 
   const handleToggleSwitchChange = () => {
     if (currentTempUnit === "C") setCurrentTempUnit("F");
     if (currentTempUnit === "F") setCurrentTempUnit("C");
+
+    console.log(currentTempUnit);
   };
 
   useEffect(() => {
@@ -53,9 +77,12 @@ function App() {
         setWeatherData(filteredData);
       })
       .catch(console.error);
+    getClothingItems()
+      .then((data) => {
+        setClothingItems(data);
+      })
+      .catch(console.error);
   }, []);
-
-  console.log(currentTempUnit);
 
   return (
     <div className="page">
@@ -68,12 +95,21 @@ function App() {
             <Route
               path="/"
               element={
-                <Main weatherData={weatherData} onCardClick={handleCardClick} />
+                <Main
+                  weatherData={weatherData}
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
               }
             />
             <Route
               path="/profile"
-              element={<Profile onCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
             />
           </Routes>
         </div>
@@ -86,6 +122,7 @@ function App() {
           modalOpen={modalOpen}
           card={selectedCard}
           onClose={closeModal}
+          onDelete={onDeleteItem}
         />
         <Footer />
       </CurrentTempUnitContext.Provider>

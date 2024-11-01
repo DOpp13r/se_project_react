@@ -6,7 +6,6 @@ const ToggleSwitch = () => {
   const { currentTempUnit, handleToggleSwitchChange } = useContext(
     CurrentTempUnitContext
   );
-  console.log(currentTempUnit);
 
   return (
     <label className="toggle__switch">
