@@ -41,10 +41,6 @@ function App() {
     setModalOpen("add-garment");
   };
 
-  const handleProfileAddClick = () => {
-    setModalOpen("add-garment");
-  };
-
   const closeModal = () => {
     setModalOpen("");
   };

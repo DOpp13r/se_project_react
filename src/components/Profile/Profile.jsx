@@ -10,7 +10,7 @@ function Profile({ onCardClick, clothingItems, handleAddClick }) {
       </section>
       <ClothesSection
         onCardClick={onCardClick}
-        onClick={handleAddClick}
+        handleAddClick={handleAddClick}
         clothingItems={clothingItems}
       />
     </div>
