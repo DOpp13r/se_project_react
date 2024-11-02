@@ -11,7 +11,9 @@ import Profile from "../Profile/Profile";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import ClothesSection from "../ClothesSection/ClothesSection";
 import Footer from "../Footer/Footer";
+
 import {
   getClothingItems,
   addClothingItem,
@@ -35,6 +37,11 @@ function App() {
   };
 
   const handleAddClick = () => {
+    console.log("Button is clicked");
+    setModalOpen("add-garment");
+  };
+
+  const handleProfileAddClick = () => {
     setModalOpen("add-garment");
   };
 
@@ -107,6 +114,7 @@ function App() {
               element={
                 <Profile
                   onCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
                   clothingItems={clothingItems}
                 />
               }
