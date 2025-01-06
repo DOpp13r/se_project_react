@@ -9,6 +9,13 @@
   overflow: hidden;
 }
 
+.card__container {
+  display: flex;
+  position: aboslute;
+  top: 15px;
+  align-items: center;
+}
+
 .card__name {
   position: absolute;
   margin: 0;
@@ -18,6 +25,27 @@
   color: #00000099;
   padding: 2px 12px;
   font-family: "CabinetGrotesk-Bold", sans-serif;
+}
+
+.card__like {
+  background-image: url(../../assets/like_heart.png);
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 15px;
+  border: none;
+}
+
+.card__like:hover {
+  opacity: 50%;
+  transition: 0.2s linear;
+  cursor: pointer;
+}
+
+.card__like_active {
+  background-image: url(../../assets/liked_heart.png);
 }
 
 .card__image {

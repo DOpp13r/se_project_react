@@ -1,6 +1,8 @@
 # Sprint 10: React + Vite
 
-Project 10 is an introduction to new tools: React and Vite. The project is an informational page that displays the weather conditions of a location at a certain time and date. As well, the project is able to show the type of clothing that seems to be necessary for the current weather condition. 
+Link to the back-end repo: https://github.com/DOpp13r/se_project_express
+
+Project 10 is an introduction to new tools: React and Vite. The project is an informational page that displays the weather conditions of a location at a certain time and date. As well, the project is able to show the type of clothing that seems to be necessary for the current weather condition.
 
 Currently, two official plugins are available:
 

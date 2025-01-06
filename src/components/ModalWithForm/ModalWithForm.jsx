@@ -1,13 +1,17 @@
 import "./ModalWithForm.css";
 import closeButton from "../../assets/closeButton.svg";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 function ModalWithForm({
   children,
   buttonText,
+  secondButtonText,
   title,
   isOpen,
   onClose,
   onSubmit,
+  changeModal,
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
@@ -18,9 +22,18 @@ function ModalWithForm({
         </button>
         <form className="modal__form" onSubmit={onSubmit}>
           {children}
-          <button className="modal__submit" type="submit">
-            {buttonText}
-          </button>
+          <div className="modal__submit_container">
+            <button className="modal__submit" type="submit">
+              {buttonText}
+            </button>
+            <button
+              className="modal__change"
+              type="button"
+              onClick={changeModal}
+            >
+              {secondButtonText}
+            </button>
+          </div>
         </form>
       </div>
     </div>
