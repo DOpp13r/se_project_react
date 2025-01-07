@@ -291,19 +291,19 @@ function App() {
           <LoginModal
             isOpen={modalOpen === "login"}
             onClose={closeModal}
-            // setModalOpen={setModalOpen}
+            setModalOpen={setModalOpen}
             logInUser={logInUser}
           />
           <RegisterModal
             isOpen={modalOpen === "register"}
             onClose={closeModal}
-            // setModalOpen={setModalOpen}
+            setModalOpen={setModalOpen}
             registerUser={registerUser}
           />
           <EditProfileModal
             isOpen={modalOpen === "edit"}
             onClose={closeModal}
-            // setModalOpen={setModalOpen}
+            setModalOpen={setModalOpen}
             updateUser={updateUser}
           />
         </CurrentTempUnitContext.Provider>
