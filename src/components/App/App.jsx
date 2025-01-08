@@ -23,8 +23,6 @@ import {
   getClothingItems,
   addClothingItem,
   deleteClothingItem,
-  likeClothingItem,
-  dislikeClothingItem,
 } from "../../utils/api";
 
 function App() {
@@ -136,7 +134,6 @@ function App() {
       .signUp({ name, avatar, email, password })
       .then(() => {
         closeModal();
-        console.log("User created");
         logInUser({ email, password });
       })
       .catch((error) => {
@@ -151,7 +148,6 @@ function App() {
         setClothingItems([item.data, ...clothingItems]);
         closeModal();
         resetForm();
-        // navigate("/profile");
       })
       .catch((err) => console.log(err));
   }

@@ -20,8 +20,6 @@ function ItemCard({
 
   const currentUser = useContext(CurrentUserContext);
   const isLiked = item.likes.includes(currentUser._id);
-  console.log(item);
-  console.log(isLiked);
   const likeBtnCN = isLiked ? "card__like card__like_active" : "card__like";
 
   return (

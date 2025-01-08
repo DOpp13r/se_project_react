@@ -12,9 +12,9 @@ function ClothesSection({
 }) {
   const currentUser = useContext(CurrentUserContext);
 
-  const userItems = clothingItems.filter((item) => {
-    return item.owner === currentUser._id;
-  });
+  const userItems = clothingItems.filter(
+    (item) => item.owner === currentUser._id
+  );
   return (
     <div className="clothes__section">
       <div className="clothes__section-header">

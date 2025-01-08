@@ -1,7 +1,6 @@
 .modal__content_type_image {
-  width: 498px;
   height: 610px;
-  padding: 0;
+  padding: 0px !important;
 }
 
 .modal__close-icon-card {
@@ -20,7 +19,7 @@
 }
 
 .modal__footer {
-  margin: 20px 0 32px 32px;
+  margin: 20px 32px 32px;
 }
 
 .modal__caption {
@@ -45,6 +44,6 @@
   background-color: #ffffff;
   padding: 0;
   font-size: 20px;
-  right: 32px;
+  right: 36px;
   cursor: pointer;
 }
