@@ -8,7 +8,7 @@ function Profile({
   handleAddClick,
   handleEditClick,
   signOut,
-  handleCardLike,
+  onCardLike,
   isLoggedIn,
 }) {
   return (
@@ -20,7 +20,7 @@ function Profile({
         onCardClick={onCardClick}
         handleAddClick={handleAddClick}
         clothingItems={clothingItems}
-        handleCardLike={handleCardLike}
+        onCardLike={onCardLike}
         isLoggedIn={isLoggedIn}
       />
     </div>

@@ -23,6 +23,8 @@ import {
   getClothingItems,
   addClothingItem,
   deleteClothingItem,
+  likeClothingItem,
+  dislikeClothingItem,
 } from "../../utils/api";
 
 function App() {
@@ -72,30 +74,6 @@ function App() {
   };
 
   const navigate = useNavigate();
-
-  function handleCardLike({ likes, _id }) {
-    const token = localStorage.getItem("jwt");
-    const isLiked = likes.includes(currentUser._id);
-    if (!isLiked) {
-      anyCardLike(_id, token)
-        .then((updatedCard) => {
-          console.log("like");
-          setClothingItems((cards) =>
-            cards.map((item) => (item._id === _id ? updatedCard : item))
-          );
-        })
-        .catch((err) => console.error(err));
-    } else {
-      removeCardLike(_id, token)
-        .then((updatedCard) => {
-          console.log("unlike");
-          setClothingItems((items) =>
-            items.map((item) => (item._id === _id ? updatedCard : item))
-          );
-        })
-        .catch((err) => console.error(err));
-    }
-  }
 
   function updateUser({ name, avatar }) {
     const token = localStorage.getItem("jwt");
@@ -165,18 +143,17 @@ function App() {
   }
 
   function handleCardLike({ id, isLiked }) {
+    console.log("Item ID:", id);
     const token = localStorage.getItem("jwt");
     !isLiked
-      ? api
-          .addCardLike(id, token)
+      ? likeClothingItem(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
           .catch((err) => console.log(err))
-      : api
-          .removeCardLike(id, token)
+      : dislikeClothingItem(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
@@ -221,6 +198,7 @@ function App() {
       .then((user) => {
         setIsLoggedIn(true);
         setCurrentUser(user);
+        console.log("Current User:", user);
       })
       .catch((err) => {
         console.error(err);
@@ -249,7 +227,7 @@ function App() {
                     weatherData={weatherData}
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
-                    handleCardLike={handleCardLike}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -263,7 +241,7 @@ function App() {
                       clothingItems={clothingItems}
                       handleEditClick={handleEditClick}
                       signOut={signOut}
-                      handleCardLike={handleCardLike}
+                      onCardLike={handleCardLike}
                       isLoggedIn={isLoggedIn}
                     />
                   </ProtectedRoute>

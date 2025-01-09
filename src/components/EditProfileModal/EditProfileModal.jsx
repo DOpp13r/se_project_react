@@ -63,7 +63,7 @@ const EditProfileModal = ({ isOpen, onClose, updateUser }) => {
         <input
           type="url"
           className="modal__input"
-          id="edit imageUrl"
+          id="editimageUrl"
           value={avatar}
           onChange={handleAvatarChange}
         />
