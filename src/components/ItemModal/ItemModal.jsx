@@ -6,6 +6,7 @@ import closeButton from "../../assets/closeButton.svg";
 function ItemModal({ modalOpen, onClose, card, onDelete }) {
   const currentUser = useContext(CurrentUserContext);
   const isOwner = card.owner === currentUser._id;
+
   return (
     <div className={`modal ${modalOpen === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
@@ -26,6 +27,7 @@ function ItemModal({ modalOpen, onClose, card, onDelete }) {
             {card.name}
             {isOwner && (
               <button className="modal__delete-button" onClick={onDelete}>
+                {" "}
                 Delete item
               </button>
             )}

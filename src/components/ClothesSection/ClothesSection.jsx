@@ -28,17 +28,15 @@ function ClothesSection({
         </button>
       </div>
       <ul className="clothes__section-items">
-        {userItems.map((item) => {
-          return (
-            <ItemCard
-              isLoggedIn={isLoggedIn}
-              key={item._id}
-              item={item}
-              onCardClick={onCardClick}
-              onCardLike={onCardLike}
-            />
-          );
-        })}
+        {userItems.map((item) => (
+          <ItemCard
+            isLoggedIn={isLoggedIn}
+            key={item._id}
+            item={item}
+            onCardClick={onCardClick}
+            onCardLike={onCardLike}
+          />
+        ))}
       </ul>
     </div>
   );

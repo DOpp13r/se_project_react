@@ -127,6 +127,12 @@ function App() {
         closeModal();
         resetForm();
       })
+      .then(
+        getClothingItems().then((data) => {
+          console.log(data);
+          setClothingItems(data);
+        })
+      )
       .catch((err) => console.log(err));
   }
 
@@ -149,14 +155,14 @@ function App() {
       ? likeClothingItem(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard.item : item))
             );
           })
           .catch((err) => console.log(err))
       : dislikeClothingItem(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard.item : item))
             );
           })
           .catch((err) => console.log(err));
@@ -228,6 +234,7 @@ function App() {
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     onCardLike={handleCardLike}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />

@@ -6,7 +6,7 @@ const EditProfileModal = ({ isOpen, onClose, updateUser }) => {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
 
-  const currentUser = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext).user;
 
   const handleNameChange = (e) => {
     console.log(e.target.value);

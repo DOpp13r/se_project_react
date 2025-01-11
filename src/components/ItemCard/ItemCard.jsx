@@ -1,25 +1,21 @@
 import "./ItemCard.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
-function ItemCard({
-  item,
-  onCardClick,
-  clothingItems,
-  onCardLike,
-  isLoggedIn,
-}) {
+function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
+  const currentUser = useContext(CurrentUserContext);
+  const [isLiked, setIsLiked] = useState(
+    item.likes.some((id) => id === currentUser._id)
+  );
   const handleCardClick = () => {
     onCardClick(item);
   };
 
   const handleLike = () => {
-    console.log(item);
-    onCardLike({ id: item._id, isLiked: item.isLiked });
+    onCardLike({ id: item._id, isLiked: !isLiked });
+    setIsLiked(!isLiked);
   };
 
-  const currentUser = useContext(CurrentUserContext);
-  const isLiked = item.likes.some((id) => id === currentUser._id);
   const itemLikeButtonClassName = isLiked
     ? "card__like card__like_active"
     : "card__like";
@@ -28,15 +24,15 @@ function ItemCard({
     <li className="card">
       <div className="card__container">
         <h2 className="card__name">{item.name}</h2>
-        {/* {isLoggedIn ? ( */}
-        <button
-          className={itemLikeButtonClassName}
-          onClick={handleLike}
-          type="button"
-        ></button>
-        {/* ) : (
+        {isLoggedIn ? (
+          <button
+            className={itemLikeButtonClassName}
+            onClick={handleLike}
+            type="button"
+          ></button>
+        ) : (
           <></>
-        )} */}
+        )}
       </div>
       <img
         src={item.imageUrl}
