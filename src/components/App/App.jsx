@@ -175,7 +175,6 @@ function App() {
     console.log(currentTempUnit);
   };
 
-  useEffect(() => {});
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {

@@ -6,6 +6,7 @@ import closeButton from "../../assets/closeButton.svg";
 function ItemModal({ modalOpen, onClose, card, onDelete }) {
   const currentUser = useContext(CurrentUserContext);
   const isOwner = card.owner === currentUser._id;
+  const isLoggedIn = currentUser._id !== undefined;
 
   return (
     <div className={`modal ${modalOpen === "preview" && "modal_opened"}`}>
@@ -25,7 +26,7 @@ function ItemModal({ modalOpen, onClose, card, onDelete }) {
         <div className="modal__footer">
           <h2 className="modal__caption">
             {card.name}
-            {isOwner && (
+            {isLoggedIn && isOwner && (
               <button className="modal__delete-button" onClick={onDelete}>
                 {" "}
                 Delete item
