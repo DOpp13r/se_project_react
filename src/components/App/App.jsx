@@ -32,6 +32,8 @@ function App() {
     type: "",
     temp: { F: 999 },
     city: "",
+    condition: "",
+    isDay: true,
   });
   const [modalOpen, setModalOpen] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -127,12 +129,6 @@ function App() {
         closeModal();
         resetForm();
       })
-      .then(
-        getClothingItems().then((data) => {
-          console.log(data);
-          setClothingItems(data);
-        })
-      )
       .catch((err) => console.log(err));
   }
 
@@ -187,10 +183,13 @@ function App() {
   useEffect(() => {
     getClothingItems()
       .then((data) => {
-        console.log(data);
+        console.log("Fetched clothing items:", data);
         setClothingItems(data.data);
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.log("Error fetching clothing items:", err);
+        setClothingItems([]);
+      });
   }, []);
 
   useEffect(() => {

@@ -20,7 +20,7 @@ function addClothingItem({ name, imageUrl, weather }, token) {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, imageUrl, weather }),
-  }).then(checkResponse);
+  });
 }
 
 function deleteClothingItem(item, token) {
@@ -30,7 +30,7 @@ function deleteClothingItem(item, token) {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(checkResponse);
+  });
 }
 
 function likeClothingItem(id, token) {

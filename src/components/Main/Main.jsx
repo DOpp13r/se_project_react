@@ -13,6 +13,16 @@ function Main({
 }) {
   const { currentTempUnit } = useContext(CurrentTempUnitContext);
 
+  // Check if `weatherData` is defined and has a `type` property
+  if (!weatherData || !weatherData.type) {
+    return <p>Loading weather data...</p>;
+  }
+
+  // Check if `clothingItems` is a valid array
+  if (!Array.isArray(clothingItems)) {
+    return <p>Loading clothing items...</p>;
+  }
+
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
@@ -24,6 +34,7 @@ function Main({
         <ul className="cards__list">
           {Array.isArray(clothingItems) &&
             clothingItems
+              .filter((item) => item && item.weather)
               .filter((item) => {
                 return item.weather === weatherData.type;
               })
