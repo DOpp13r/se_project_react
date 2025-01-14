@@ -13,24 +13,24 @@ function getClothingItems() {
 }
 
 function addClothingItem({ name, imageUrl, weather }, token) {
-  return request(`${baseUrl}/items`, {
+  return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, imageUrl, weather }),
-  });
+  }).then(checkResponse);
 }
 
 function deleteClothingItem(item, token) {
-  return request(`${baseUrl}/items/${item._id}`, {
+  return fetch(`${baseUrl}/items/${item._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  });
+  }).then(checkResponse);
 }
 
 function likeClothingItem(id, token) {
