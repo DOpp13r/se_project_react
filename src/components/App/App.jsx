@@ -98,10 +98,20 @@ function App() {
       .signIn({ email, password })
       .then((data) => {
         auth.getUser(data.token).then((user) => {
+          console.log("User Data from Backend:", user);
           setIsLoggedIn(true);
-          setCurrentUser(user);
+          setCurrentUser(user.user);
           closeModal();
           navigate("/profile");
+          getClothingItems()
+            .then((data) => {
+              console.log("Clothing Items Fetched:", data.data);
+              setClothingItems(data.data);
+            })
+            .catch((err) => {
+              console.log("Error fetching clothing items:", err);
+              setClothingItems([]);
+            });
         });
       })
       .catch((error) => {
@@ -123,13 +133,17 @@ function App() {
 
   function onAddItem({ name, imageUrl, weather }, resetForm) {
     const token = localStorage.getItem("jwt");
+    console.log("Adding item:", { name, imageUrl, weather }); // Log the input
     addClothingItem({ name, imageUrl, weather }, token)
-      .then((item) => {
-        setClothingItems([item.data, ...clothingItems]);
+      .then((data) => {
+        console.log("Item added:", data); // Log the API response
+        setClothingItems((prevItems) => [...prevItems, data.item]);
         closeModal();
         resetForm();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error("Error adding item:", err); // Log any errors
+      });
   }
 
   function onDeleteItem() {

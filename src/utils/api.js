@@ -20,7 +20,11 @@ function addClothingItem({ name, imageUrl, weather }, token) {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, imageUrl, weather }),
-  }).then(checkResponse);
+  })
+    .then(checkResponse)
+    .then((data) => {
+      return { item: data };
+    });
 }
 
 function deleteClothingItem(item, token) {

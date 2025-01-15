@@ -15,6 +15,8 @@ function ClothesSection({
   const userItems = clothingItems.filter(
     (item) => item.owner === currentUser._id
   );
+  console.log("Filtered User Items:", userItems);
+
   return (
     <div className="clothes__section">
       <div className="clothes__section-header">
