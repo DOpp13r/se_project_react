@@ -100,12 +100,11 @@ function App() {
         auth.getUser(data.token).then((user) => {
           console.log("User Data from Backend:", user);
           setIsLoggedIn(true);
-          setCurrentUser(user.user);
+          setCurrentUser(user);
           closeModal();
           navigate("/profile");
           getClothingItems()
             .then((data) => {
-              console.log("Clothing Items Fetched:", data.data);
               setClothingItems(data.data);
             })
             .catch((err) => {
@@ -137,7 +136,7 @@ function App() {
     addClothingItem({ name, imageUrl, weather }, token)
       .then((data) => {
         console.log("Item added:", data); // Log the API response
-        setClothingItems((prevItems) => [...prevItems, data.item]);
+        setClothingItems(data.data);
         closeModal();
         resetForm();
       })

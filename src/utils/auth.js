@@ -25,8 +25,12 @@ function signUp({ name, avatar, email, password }) {
     }),
   })
     .then(checkResponse)
-    .then(() => {
-      signIn({ email, password });
+    .then((data) => {
+      if (data) {
+        return signIn({ email, password });
+      } else {
+        throw new Error("Sign-up failed");
+      }
     });
 }
 
