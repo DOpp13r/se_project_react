@@ -136,7 +136,7 @@ function App() {
     addClothingItem({ name, imageUrl, weather }, token)
       .then((data) => {
         console.log("Item added:", data); // Log the API response
-        setClothingItems(data.data);
+        setClothingItems((items) => [...items, data.item]);
         closeModal();
         resetForm();
       })
