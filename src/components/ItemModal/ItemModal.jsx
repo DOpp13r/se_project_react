@@ -5,8 +5,7 @@ import closeButton from "../../assets/closeButton.svg";
 
 function ItemModal({ modalOpen, onClose, card, onDelete }) {
   const currentUser = useContext(CurrentUserContext);
-  const isOwner = card.owner === currentUser.user._id;
-  const isLoggedIn = currentUser._id !== undefined;
+  const isOwner = card.owner === currentUser?.user?._id;
 
   return (
     <div className={`modal ${modalOpen === "preview" && "modal_opened"}`}>

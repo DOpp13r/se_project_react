@@ -40,14 +40,7 @@ function App() {
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({
-    user: {
-      name: "",
-      avatar: "",
-      email: "",
-      _id: "",
-    },
-  });
+  const [currentUser, setCurrentUser] = useState({});
 
   const handleCardClick = (card) => {
     setModalOpen("preview");

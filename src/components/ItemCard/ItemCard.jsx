@@ -6,7 +6,7 @@ function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
   const currentUser = useContext(CurrentUserContext);
 
   const [isLiked, setIsLiked] = useState(
-    item.likes.some((id) => id === currentUser.user._id)
+    item.likes.some((id) => id === currentUser?.user?._id)
   );
 
   const handleCardClick = () => {
