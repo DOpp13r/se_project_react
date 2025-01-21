@@ -81,10 +81,15 @@ function App() {
     const token = localStorage.getItem("jwt");
     auth
       .editUser({ name, avatar }, token)
-      .then((user) => {
-        console.log("User updated:", user);
-        setCurrentUser(user);
-        // Fetch updated clothing items after user update
+      .then((newData) => {
+        console.log("User updated:", newData.user);
+
+        // Merge current user data and overwrite name and avatar
+        setCurrentUser({
+          ...currentUser,
+          user: { ...currentUser.user, ...newData.user },
+        });
+
         return getClothingItems();
       })
       .then((data) => {
@@ -307,8 +312,6 @@ function App() {
           />
           <RegisterModal
             isOpen={modalOpen === "register"}
-            onClose={closeModal}
-            setModalOpen={setModalOpen}
             registerUser={registerUser}
           />
           <EditProfileModal
