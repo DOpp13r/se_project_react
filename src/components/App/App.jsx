@@ -82,11 +82,22 @@ function App() {
     auth
       .editUser({ name, avatar }, token)
       .then((user) => {
+        console.log("User updated:", user);
         setCurrentUser(user);
+        // Fetch updated clothing items after user update
+        return getClothingItems();
+      })
+      .then((data) => {
+        console.log("Fetched clothing items:", data);
+        setClothingItems(
+          data.data.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          )
+        );
         closeModal();
       })
       .catch((err) => {
-        console.error(err);
+        console.error("Error updating user or fetching clothing items:", err);
       });
   }
 
@@ -105,7 +116,11 @@ function App() {
           navigate("/profile");
           getClothingItems()
             .then((data) => {
-              setClothingItems(data.data);
+              setClothingItems(
+                data.data.sort(
+                  (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+                )
+              );
             })
             .catch((err) => {
               console.log("Error fetching clothing items:", err);
@@ -136,7 +151,7 @@ function App() {
     addClothingItem({ name, imageUrl, weather }, token)
       .then((data) => {
         console.log("Item added:", data); // Log the API response
-        setClothingItems((items) => [...items, data.item]);
+        setClothingItems((items) => [data.item, ...items]);
         closeModal();
         resetForm();
       })
@@ -160,7 +175,7 @@ function App() {
   function handleCardLike({ id, isLiked }) {
     console.log("Item ID:", id);
     const token = localStorage.getItem("jwt");
-    !isLiked
+    return !isLiked
       ? likeClothingItem(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
@@ -197,7 +212,11 @@ function App() {
     getClothingItems()
       .then((data) => {
         console.log("Fetched clothing items:", data);
-        setClothingItems(data.data);
+        setClothingItems(
+          data.data.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          )
+        );
       })
       .catch((err) => {
         console.log("Error fetching clothing items:", err);

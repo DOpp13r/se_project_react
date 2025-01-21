@@ -14,8 +14,13 @@ function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
   };
 
   const handleLike = () => {
-    onCardLike({ id: item._id, isLiked: isLiked });
-    setIsLiked(!isLiked);
+    onCardLike({ id: item._id, isLiked: isLiked })
+      .then(() => {
+        setIsLiked(!isLiked);
+      })
+      .catch((err) => {
+        console.error("Error toggling like:", err);
+      });
   };
 
   const itemLikeButtonClassName = isLiked

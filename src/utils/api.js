@@ -40,11 +40,7 @@ function likeClothingItem(id, token) {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  })
-    .then(checkResponse)
-    .catch((err) => {
-      console.error(err);
-    });
+  }).then(checkResponse);
 }
 
 function dislikeClothingItem(id, token) {
@@ -54,11 +50,7 @@ function dislikeClothingItem(id, token) {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  })
-    .then(checkResponse)
-    .catch((err) => {
-      console.error(err);
-    });
+  }).then(checkResponse);
 }
 
 export {
