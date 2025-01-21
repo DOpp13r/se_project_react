@@ -52,7 +52,7 @@ const RegisterModal = ({ isOpen, onClose, registerUser, setModalOpen }) => {
         <input
           type="text"
           className="modal__input"
-          id="register name"
+          id="name"
           name="name"
           placeholder="Name"
           value={name}
@@ -64,7 +64,7 @@ const RegisterModal = ({ isOpen, onClose, registerUser, setModalOpen }) => {
         <input
           type="url"
           className="modal__input"
-          id=" avatar url"
+          id="imageUrl"
           placeholder="Avatar URL"
           value={avatar}
           onChange={handleAvatarChange}

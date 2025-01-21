@@ -47,7 +47,7 @@ const EditProfileModal = ({ isOpen, onClose, updateUser }) => {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label className="modal__label" htmlFor="edit name">
+      <label className="modal__label" htmlFor="registerName">
         Name{""}
         <input
           type="text"
@@ -58,7 +58,7 @@ const EditProfileModal = ({ isOpen, onClose, updateUser }) => {
           onChange={handleNameChange}
         />
       </label>
-      <label className="modal__label" htmlFor="avatar">
+      <label className="modal__label" htmlFor="editimageUrl">
         Avatar URL{""}
         <input
           type="url"

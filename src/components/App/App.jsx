@@ -83,8 +83,6 @@ function App() {
       .editUser({ name, avatar }, token)
       .then((newData) => {
         console.log("User updated:", newData.user);
-
-        // Merge current user data and overwrite name and avatar
         setCurrentUser({
           ...currentUser,
           user: { ...currentUser.user, ...newData.user },
@@ -312,6 +310,8 @@ function App() {
           />
           <RegisterModal
             isOpen={modalOpen === "register"}
+            onClose={closeModal}
+            setModalOpen={setModalOpen}
             registerUser={registerUser}
           />
           <EditProfileModal
