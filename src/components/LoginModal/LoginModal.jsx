@@ -36,12 +36,12 @@ const LoginModal = ({ isOpen, onClose, logInUser, setModalOpen }) => {
       onSubmit={handleSubmit}
       changeModal={changeModal}
     >
-      <label className="modal__label" htmlFor="email">
+      <label className="modal__label">
         Email{" "}
         <input
           type="email"
           className="modal__input"
-          id="email"
+          id="login email"
           name="email"
           placeholder="Email"
           value={email}
@@ -49,12 +49,12 @@ const LoginModal = ({ isOpen, onClose, logInUser, setModalOpen }) => {
           required
         />
       </label>
-      <label className="modal__label" htmlFor="password">
+      <label className="modal__label">
         Password{" "}
         <input
           type="password"
           className="modal__input"
-          id="password"
+          id="login password"
           name="password"
           placeholder="Password"
           value={password}
