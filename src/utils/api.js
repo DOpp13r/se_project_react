@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+import { baseUrl } from "../utils/constants";
 
 function checkResponse(res) {
   return res ? res.json() : Promise.reject("Network response failed");

@@ -1,4 +1,4 @@
-import { baseUrl } from "./api";
+import { baseUrl } from "../utils/constants";
 import { checkResponse } from "./api";
 
 function checkToken(token) {
