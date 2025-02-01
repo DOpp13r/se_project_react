@@ -1,6 +1,6 @@
 export const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://api.gcp-walkthrough.crabdance.com:3001/items"
+    ? "https://api.gcp-walkthrough.crabdance.com"
     : "http://localhost:3001";
 
 export const weatherOptions = [
